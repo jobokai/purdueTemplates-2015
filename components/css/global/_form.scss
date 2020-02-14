@@ -37,7 +37,7 @@ form.purdueForm{
 		.sublabel{
 			display:block;
 			font-size:0.75em;
-			color:#555;
+			color:$steel-gray;
 		}
 	}
 	label.required{
@@ -102,7 +102,7 @@ form.purdueForm{
 	input[type="submit"]{
 		margin-top:30px;
 		padding:5px 15px;
-		background-color:#444;
+		background-color:$steel-gray;
 		color:#fff;
 	}
 	input[type="submit"]:hover{

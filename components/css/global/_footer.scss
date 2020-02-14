@@ -1,8 +1,12 @@
 .footer {
     width: 100%;
-    background-color: #000;
+    background-color: #000000;
     overflow: hidden;
     padding-bottom: 15px;
+
+    .panel-group {
+        padding: 3.125rem 0 !important;
+    }
 
     // footer links are stacked in expandable accordions
     // with horizontal tagline and social icons underneath
@@ -14,22 +18,22 @@
             background-color: transparent;
             margin-top: 0;
             padding: 15px;
-            border-bottom: solid 1px #333;
-            font-size: calc-toEm(14);
-            line-height: calc-toEm(37);
+            font-size: 1rem;
 
             a {
                 display: inline-block;
                 width: 100%;
             }
 
-            a:link, a:visited {
+            a:link,
+            a:visited {
                 color: #adadad;
                 font-weight: 400;
                 text-decoration: none;
             }
 
-            a:hover, a:active {
+            a:hover,
+            a:active {
                 color: #fff;
                 font-weight: 400;
                 text-decoration: none;
@@ -40,19 +44,24 @@
                 background-color: transparent;
                 font-size: calc-toEm(21);
 
-                .panel-title {
-                    font-family: $font-champion-welter;
-                    font-size: calc-toEm(16);
-                    font-weight: 400;
+                .panel-title a {
+                    font-family: $acumin-pro-semicondensed;
+                    font-weight: 600;
+                    padding: 0px;
+                    margin: 0;
                     text-transform: uppercase;
+                    font-size: 1.1rem;
                 }
 
                 a {
                     display: block;
                 }
 
-                a:link, a:visited, a:hover, a:active {
-                    color: $color-campusGold;
+                a:link,
+                a:visited,
+                a:hover,
+                a:active {
+                    color: $boiler-gold;
                     text-decoration: none;
                 }
             }
@@ -73,156 +82,216 @@
 
         .motto {
             clear: both;
-            padding: 15px 15px 0;
-            font-size: calc-toEm(20);
             text-align: center;
 
-            .taglineContainer {
-                width: 90%;
-                margin: 0 auto;
-                &--150{
-                    width:70%;
-                }
-            }
-            .tagline {
-                position:relative;
-                display:block;
-                padding-bottom:60/430*100%;
-                &--150{
-                    padding-bottom:30.76396/227.38567*100%;
-                    transition: filter 0.25s ease-in;
-                    &:link,&:visited{
-                        filter:brightness(1);
-                    }
-                    &:hover,&:active,&:focus{
-                        filter:brightness(1.1);
-                    }
-                    &:focus{
-                        outline-offset:4px;
-                        outline:dotted 1px #fff;
-                    }
-                }
-                .horizontal,.vertical{
-                    position:absolute;
-                    top:0;
-                    right:0;
-                    bottom:0;
-                    left:0;
-                }
-            }
             .vertical {
+                display: flex;
+                height: 114px;
+                margin: 0 auto;
+            }
+
+            .horizontal {
+                margin-top: 1.6rem;
                 display: none;
             }
 
+            @include display-lg {
+                .vertical {
+                    max-height: 100px;
+                }
+            }
+
+            @include display-md {
+                .vertical {
+                    display: none;
+                }
+
+                .horizontal {
+                    display: flex;
+                    max-width: 400px;
+                    margin: 0;
+                    width: 100%;
+                    max-height: 48px;
+                }
+            }
+
             .social {
-                clear:both;
-                display: block;
-                width: 100%;
-                padding-top: 5px;
+                padding: 3.125rem 0 0 0;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                font-size: 1.1rem;
+
+                a {
+                    margin: 0.25rem 2.7%;
+                    color: #999;
+                    font-weight: 700;
+                    text-decoration: none;
+                }
+
+                a:hover {
+                    color: #ffffff;
+                }
+
+                @include display-lg {
+                    padding-left: 2.09rem;
+                }
+
+                @include display-md {
+                    font-size: 1.85rem;
+                    justify-content: center;
+                    border: none;
+                    padding-top: 3rem;
+                    padding-left: 0;
+                }
+
+                @include display-sm {
+                    margin-top: 0;
+                    font-size: 1.4rem;
+                }
             }
 
             // social icons
-            a {
-                display: inline-block;
-                position: relative;
-                margin: 2.5px 2%;
-                text-align: center;
+            .text-hidden {
+                position: absolute;
+                display: block;
+                top: -1000px;
+                left: -1000px;
+            }
 
-                .text-hidden {
-                    position: absolute;
-                    display: block;
-                    top: -1000px;
-                    left: -1000px;
-                }
-
-                .fa::after {
-                    position: absolute;
-                    display: block;
-                    overflow: hidden;
-                    width: 0;
-                    height: 0;
-                }
-
-                .fa-facebook::after {
-                    content: "Facebook";
-                }
-
-                .fa-facebook-square::after {
-                    content: "Facebook";
-                }
-
-                .fa-twitter::after {
-                    content: "Twitter";
-                }
-
-                .fa-twitter-square::after {
-                    content: "Twitter";
-                }
-
-                .fa-youtube::after {
-                    content: "Youtube";
-                }
-
-                .fa-youtube-square::after {
-                    content: "Youtube";
-                }
-
-                .fa-instagram::after {
-                    content: "Instagram";
-                }
-
-                .fa-instagram-square::after {
-                    content: "Instagram";
-                }
-
-                .fa-pinterest::after {
-                    content: "Pinterest";
-                }
-
-                .fa-pinterest-square::after {
-                    content: "Pinterest";
-                }
-
-                .fa-google-plus::after {
-                    content: "Google Plus";
-                }
-
-                .fa-google-plus-square::after {
-                    content: "Google Plus";
-                }
-
-                .fa-linkedin::after {
-                    content: "Linked In";
-                }
-
-                .fa-linkedin-square::after {
-                    content: "Linked In";
-                }
-
-                .fa-amazon::after {
-                    content: "Amazon";
-                }
-
-                .fa-amazon-square::after {
-                    content: "Amazon";
+            .fa-facebook {
+                &:before {
+                    @include pseudo-icon($fa-var-facebook, 'brands');
                 }
             }
 
-            a:link, a:visited {
+            .fa-facebook-square {
+                &:before {
+                    @include pseudo-icon($fa-var-facebook-square, 'brands');
+                }
+            }
+
+            .fa-twitter {
+                &:before {
+                    @include pseudo-icon($fa-var-twitter, 'brands');
+                }
+            }
+
+            .fa-twitter-square {
+                &:before {
+                    @include pseudo-icon($fa-var-twitter-square, 'brands');
+                }
+            }
+
+            .fa-snapchat {
+                &:before {
+                    @include pseudo-icon($fa-var-snapchat, 'brands');
+                }
+            }
+
+            .fa-snapchat-square {
+                &:before {
+                    @include pseudo-icon($fa-var-snapchat-square, 'brands');
+                }
+            }
+
+            .fa-snapchat-ghost {
+                &:before {
+                    @include pseudo-icon($fa-var-snapchat-ghost, 'brands');
+                }
+            }
+
+            .fa-youtube {
+                &:before {
+                    @include pseudo-icon($fa-var-youtube, 'brands');
+                }
+            }
+
+            .fa-youtube-square {
+                &:before {
+                    @include pseudo-icon($fa-var-youtube-square, 'brands');
+                }
+            }
+
+            .fa-instagram {
+                &:before {
+                    @include pseudo-icon($fa-var-instagram, 'brands');
+                }
+            }
+
+            .fa-instagram-square {
+                &:before {
+                    @include pseudo-icon($fa-var-instagram-square, 'brands');
+                }
+            }
+
+            .fa-pinterest {
+                &:before {
+                    @include pseudo-icon($fa-var-pinterest, 'brands');
+                }
+            }
+
+            .fa-pinterest-square {
+                &:before {
+                    @include pseudo-icon($fa-var-pinterest-square, 'brands');
+                }
+            }
+
+            .fa-google-plus {
+                &:before {
+                    @include pseudo-icon($fa-var-google-plus, 'brands');
+                }
+            }
+
+            .fa-google-plus-square {
+                &:before {
+                    @include pseudo-icon($fa-var-google-plus-square, 'brands');
+                }
+            }
+
+            .fa-linkedin {
+                &:before {
+                    @include pseudo-icon($fa-var-linkedin, 'brands');
+                }
+            }
+
+            .fa-linkedin-square {
+                &:before {
+                    @include pseudo-icon($fa-var-linkedin, 'brands');
+                }
+            }
+
+            .fa-amazon {
+                &:before {
+                    @include pseudo-icon($fa-var-amazon, 'brands');
+                }
+            }
+
+            .fa-amazon-square {
+                &:before {
+                    @include pseudo-icon($fa-var-amazon, 'brands');
+                }
+
+            }
+
+            a:link,
+            a:visited {
                 color: #999;
                 text-decoration: none;
             }
 
-            a:hover, a:active {
+            a:hover,
+            a:active {
                 color: #fff;
                 text-decoration: none;
             }
 
             img {
-                display:block;
-                float:none;
+                display: block;
+                float: none;
                 max-width: 100%;
-                margin:0 auto 5px;
+                margin: 0 auto 5px;
             }
         }
     }
@@ -261,8 +330,9 @@
             .motto {
                 .taglineContainer {
                     width: 80%;
-                    &--150{
-                        width:58%;
+
+                    &--150 {
+                        width: 58%;
                     }
                 }
             }
@@ -313,8 +383,8 @@
                 }
 
                 a {
-                    padding: 8px 0 2px;
-                    border-bottom: solid 1px #474747;
+                    padding: 0.5rem 0 0.125rem;
+                    font-size: .957rem;
                 }
 
                 .panel-collapse {
@@ -325,14 +395,13 @@
 
             .motto {
                 clear: none;
-                padding: 15px 30px;
-                font-size: calc-toEm(29.6);
                 text-align: center;
 
                 .taglineContainer {
                     display: block;
                     width: 70%;
                 }
+
                 .vertical {
                     display: none;
                 }
@@ -354,21 +423,13 @@
             .motto {
                 float: left;
                 width: 20%;
-                padding: 40px 15px 15px;
-                font-size: calc-toEm(21.6);
 
                 .taglineContainer {
                     width: auto;
-                    &--150{
-                        float:left;
-                        width:70%;
-                    }
-                    .tagline {
-                        margin-bottom:10px;
-                        padding-bottom:71/202*100%;
-                        &--150{
-                            padding-bottom:73.0189/121.53733*100%;
-                        }
+
+                    &--150 {
+                        float: left;
+                        width: 70%;
                     }
                 }
 
@@ -378,15 +439,6 @@
 
                 .horizontal {
                     display: none;
-                }
-
-                .social {
-                    border-top: solid 1px #474747;
-                    
-                    a {
-                        float: left;
-                        margin: 4px 2.7%;
-                    }
                 }
             }
         }

@@ -1,5 +1,7 @@
 @import url("https://use.typekit.net/ghc8hdz.css");
 
+@import url('https://www.purdue.edu/purdue/fonts/united-sans/united-sans.css');
+
 //new fonts
 $acumin-pro-condensed: acumin-pro-condensed, "Franklin Gothic",sans-serif;
 $acumin-pro-semicondensed: acumin-pro-semi-condensed, "Franklin Gothic",sans-serif;
@@ -21,3 +23,13 @@ $font-champion-middle:$acumin-pro;
 $font-champion-heavy:$united-sans;
 $font-fontAwesome:"FontAwesome";
 $font-helvetica:$acumin-pro;
+
+// =====================================
+// FontAwesome styles
+// TODO: Add license comments for all FontAwesome styles
+// =====================================
+$fa-font-path: "https://use.fontawesome.com/releases/v5.12.0/webfonts";
+@import "node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "node_modules/@fortawesome/fontawesome-free/scss/solid";
+@import "node_modules/@fortawesome/fontawesome-free/scss/regular";
+@import "node_modules/@fortawesome/fontawesome-free/scss/brands";

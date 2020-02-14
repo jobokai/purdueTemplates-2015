@@ -4,16 +4,52 @@
 
 
 // Dropdown arrow/caret
+// .caret {
+//   display: inline-block;
+//   width: 0;
+//   height: 0;
+//   margin-left: 2px;
+//   vertical-align: middle;
+//   border-top:   $caret-width-base dashed;
+//   border-top:   $caret-width-base solid \9; // IE8
+//   border-right: $caret-width-base solid transparent;
+//   border-left:  $caret-width-base solid transparent;
+// }
+// General caret styles for a span
 .caret {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 2px;
+  margin-left: 5px;
+  pointer-events: none;
+  top: initial !important;
+  &:before {
+    font-size: .8rem;
+    vertical-align: middle;
+    @include pseudo-icon($fa-var-chevron-down, "solid");
+  }
+}
+
+// selected styles for the up arrow for gold and blackbar
+.open .caret:before,
+button[aria-expanded="true"] .caret:before {
+  @include pseudo-icon($fa-var-chevron-up, "solid");
+}
+
+// SubMenu Main Nav
+ul.dropdown-menu li.dropdown-submenu a.dropdown-toggle .caret {
+  &:before {
+    @include pseudo-icon($fa-var-angle-right, 'solid');
+  }
+}
+
+// Sidebar styles for the carets; this overrides the current CSS
+.sidenav>ul>li .caret:before {
+  font-size: .8rem;
   vertical-align: middle;
-  border-top:   $caret-width-base dashed;
-  border-top:   $caret-width-base solid \9; // IE8
-  border-right: $caret-width-base solid transparent;
-  border-left:  $caret-width-base solid transparent;
+  margin-top: 6px;
+  @include pseudo-icon($fa-var-chevron-down, "solid");
+}
+
+.sidenav .dropdown-submenu.open .dropdown-toggle .caret:before {
+  @include pseudo-icon($fa-var-chevron-up, "solid");
 }
 
 // The dropdown wrapper (div)
@@ -45,7 +81,7 @@
   border: 1px solid $dropdown-fallback-border; // IE8 fallback
   border: 1px solid $dropdown-border;
   border-radius: $border-radius-base;
-  @include box-shadow(0 6px 12px rgba(0,0,0,.175));
+  @include box-shadow(0 6px 12px rgba(0, 0, 0, .175));
   background-clip: padding-box;
 
   // Aligns the dropdown menu to right
@@ -62,7 +98,7 @@
   }
 
   // Links within the dropdown menu
-  > li > a {
+  >li>a {
     display: block;
     padding: 3px 20px;
     clear: both;
@@ -74,7 +110,8 @@
 }
 
 // Hover/Focus state
-.dropdown-menu > li > a {
+.dropdown-menu>li>a {
+
   &:hover,
   &:focus {
     text-decoration: none;
@@ -84,7 +121,8 @@
 }
 
 // Active state
-.dropdown-menu > .active > a {
+.dropdown-menu>.active>a {
+
   &,
   &:hover,
   &:focus {
@@ -99,7 +137,8 @@
 //
 // Gray out text and ensure the hover/focus state remains gray
 
-.dropdown-menu > .disabled > a {
+.dropdown-menu>.disabled>a {
+
   &,
   &:hover,
   &:focus {
@@ -119,13 +158,14 @@
 
 // Open state for the dropdown
 .open {
+
   // Show the menu
-  > .dropdown-menu {
+  >.dropdown-menu {
     display: block;
   }
 
   // Remove the outline when :focus is triggered
-  > a {
+  >a {
     outline: 0;
   }
 }
@@ -138,6 +178,7 @@
   left: auto; // Reset the default from `.dropdown-menu`
   right: 0;
 }
+
 // With v3, we enabled auto-flipping if you have a dropdown within a right
 // aligned nav component. To enable the undoing of that, we provide an override
 // to restore the default dropdown menu alignment.
@@ -170,7 +211,7 @@
 }
 
 // Right aligned dropdowns
-.pull-right > .dropdown-menu {
+.pull-right>.dropdown-menu {
   right: 0;
   left: auto;
 }
@@ -182,6 +223,7 @@
 
 .dropup,
 .navbar-fixed-bottom .dropdown {
+
   // Reverse the caret
   .caret {
     border-top: 0;
@@ -189,6 +231,7 @@
     border-bottom: $caret-width-base solid \9; // IE8
     content: "";
   }
+
   // Different positioning for bottom up menu
   .dropdown-menu {
     top: auto;
@@ -205,12 +248,15 @@
 @media (min-width: $grid-float-breakpoint) {
   .navbar-right {
     .dropdown-menu {
-      right: 0; left: auto;
+      right: 0;
+      left: auto;
     }
+
     // Necessary for overrides of the default right aligned menu.
     // Will remove come v4 in all likelihood.
     .dropdown-menu-left {
-      left: 0; right: auto;
+      left: 0;
+      right: auto;
     }
   }
 }
